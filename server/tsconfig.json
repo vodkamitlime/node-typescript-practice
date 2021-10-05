@@ -1,0 +1,10 @@
+// typescript 프로젝트라는 것을 알려줌 
+// node 랑 front 랑 설정이 조금 다름
+
+{
+    "compilerOptions" : {
+        "strict": true,
+        "lib": ["es5", "es6", "es2016", "ES2017", "ES2018", "ES2019", "ES2020"],
+        "moduleResolution": "node",
+    }
+}
