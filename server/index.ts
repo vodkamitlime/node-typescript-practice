@@ -2,6 +2,7 @@
 // node modules 에서 export default 하면 export as 필요 없음 
 
 // import * as express from 'express'; // typescript 에서는 import 가능
+// esModuleInterop true 로 설정해야 바로 import 가능
 import express, {Request, Response} from 'express';
 
 const app = express();
