@@ -5,10 +5,10 @@ import {sequelize} from './sequelize';
 class User extends Model {
     public readonly id!: number; // 느낌표 붙이면 반드시 존재한다는 뜻
     public nickname!: string;
-    public userId: string;
+    public userId!: string;
     public password!: string;
-    public readonly createdAt: Date; // readonly 붙이면 사용자가 직접 변경하지 않는다는 뜻
-    public readonly updatedAt: Date;
+    public readonly createdAt!: Date; // readonly 붙이면 사용자가 직접 변경하지 않는다는 뜻
+    public readonly updatedAt!: Date;
 }
 
 User.init({

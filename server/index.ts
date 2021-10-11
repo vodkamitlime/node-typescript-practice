@@ -4,19 +4,29 @@
 // import * as express from 'express'; // typescript 에서는 import 가능
 // esModuleInterop true 로 설정해야 바로 import 가능
 import express, {Request, Response} from 'express';
-import * as morgan from 'morgan';
-import * as cors from 'cors';
-import * as cookieParser from 'cookie-parser';
-import * as expressSession from 'express-session';
-import * as dotenv from 'dotenv';
-import * as passport from 'passport';
-import * as hpp from 'hpp';
-import * as helmet from 'helmet';
+import morgan from 'morgan';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import expressSession from 'express-session';
+import dotenv from 'dotenv';
+import passport from 'passport';
+import hpp from 'hpp';
+import helmet from 'helmet';
+
+import {sequelize} from './models';
 
 dotenv.config();
 const app = express();
 const prod: boolean = process.env.NODE_ENV === 'production';
 app.set('port', prod ? process.env.PORT : 3065);
+sequelize.sync({force:false}) // true 하면 서버 재시작할때마다 db 초기화
+    .then(() => {
+        console.log('db connected');
+    })
+    .catch((err: Error) => { // 이것도 기본적으로 타이핑 되어 있음 
+        console.error(err);
+    });
+
 if (prod) {
     app.use(hpp());
     app.use(helmet());
@@ -53,7 +63,7 @@ app.use(passport.session());
 app.get('/', (req: Request, res: Response) => { // req, res 타입은 생략 가능 
     res.send('Hello World!');
 });
-)
+
 app.listen(app.get('port'), () => {
     console.log(`Server is running on ${app.get('port')}`);
 });
