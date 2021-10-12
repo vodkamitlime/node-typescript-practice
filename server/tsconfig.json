@@ -6,5 +6,5 @@
         "esModuleInterop": true, // export default 가 되지 않아도 자동으로 import 가 되지 않아도 바로 import 가능 (asterik 쓰지 않아도 됨)
         "typeRoots": ["./types"] // 이게 없으면 node modules 의 types 들을 전부 가져오는데, 해놓으면 거기서 안 가져오고 import 한 것들만 가져옴 
     },
-    // "files": ["./index.ts", "./types/index.ts"] // 어떤 파일만 컴파일할지 적을 수 있음
+    // "files": ["./index.ts"] // 어떤 파일만 컴파일할지 적을 수 있음
 }
