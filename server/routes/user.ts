@@ -5,7 +5,7 @@ import User from '../models/user';
 
 const router = express.Router();
 router.get('/', isLoggedIn, (req, res) => { // get 함수 안에 들어가면 알아서 타입 추론
-    const user = req.user! as User;
+    const user = req.user!.toJSON() as User;
     delete user.password;
     return res.json(user);
 });
